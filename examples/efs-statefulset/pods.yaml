@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-1
+  namespace: efs-ns
+spec:
+  containers:
+    - name: myapp-1
+      image: busybox:1.36
+      command: ["/bin/sh"]
+      args:
+        - "-c"
+        - "while true; do date -u >> /data/out1.txt; sleep 5; done"
+      volumeMounts:
+        - name: persistent-storage
+          mountPath: /data
+  volumes:
+    - name: persistent-storage
+      persistentVolumeClaim:
+        claimName: myapp
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-2
+  namespace: efs-ns
+spec:
+  containers:
+    - name: myapp-2
+      image: busybox:1.36
+      command: ["/bin/sh"]
+      args:
+        - "-c"
+        - "while true; do date -u >> /data/out2.txt; sleep 5; done"
+      volumeMounts:
+        - name: persistent-storage
+          mountPath: /data
+  volumes:
+    - name: persistent-storage
+      persistentVolumeClaim:
+        claimName: myapp

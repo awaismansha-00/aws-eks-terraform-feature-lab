@@ -1,0 +1,6 @@
+defaultArgs:
+  - --kubelet-use-node-status-port
+  - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  - --metric-resolution=15s 
+  - --cert-dir=/tmp
+  - --secure-port=10250
