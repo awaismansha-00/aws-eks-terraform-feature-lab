@@ -5,6 +5,8 @@ The goal is not to be a production platform module. The goal is to show how the 
 
 ## Architecture
 
+![AWS EKS Terraform architecture](docs/AWS_EKS.png)
+
 ```text
 AWS account
 └── VPC
